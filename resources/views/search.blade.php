@@ -6,7 +6,7 @@
         <p> The search results for your query <b> {{ $query }} </b> are :</p>
     <table class="table table-striped">
         <tbody>
-            @foreach($details as $phone)
+            @foreach($phones as $phone)
             <tr>
                 <th>Brand: </th>
                 <td>{{$phone->brand}}</td>

@@ -21,9 +21,9 @@ Route::get('/', function () {
 
 Route::any('/search',function(Request $request){
     $q = $request->input('q');
-    $phone = Phone::where('color','LIKE','%'.$q.'%')->orWhere('memory','LIKE','%'.$q.'%')->get();
-    if(count($phone) > 0)
-        return view('search')->withDetails($phone)->withQuery ($q);
+    $phones = Phone::where('color','LIKE','%'.$q.'%')->orWhere('memory','LIKE','%'.$q.'%')->get();
+    if(count($phones) > 0)
+        return view('search')->with(['phones' => $phones, 'q' => $q])->withDetails($phones)->withQuery ($q);
     else return view ('search_notfound')->withQuery($q)->withMessage('No Details found. Try to search again !');
 });
 
